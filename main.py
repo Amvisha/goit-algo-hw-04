@@ -1,16 +1,39 @@
-# This is a sample Python script.
+def total_salary(path):
+    """
+    Parses a file with developer salaries and returns the total and average salary amount.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    Input:
+    :param path: string     Path to text file.
 
+    Output:
+    :return: tuple   A tuple of two numbers: total salaries and average salary
+    """
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    total_salary = 0
+    developer_count = 0
 
+    try:
+        with open(path, 'r', encoding='utf-8') as file:
+            for line in file:
+                developer, salary = line.strip().split(',')
+                total_salary += int(salary)
+                developer_count += 1
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+        if developer_count == 0:
+            print(f"The file '{path}' is empty.")
+            return 0, 0  # Returning 0, 0, if file is empty
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        average_salary = int(total_salary / developer_count)
+        return total_salary, average_salary
+
+    except FileNotFoundError:
+        print(f"Error: File '{path}' not found.")
+        return 0, 0  # Returning 0, 0 in case of file error
+
+    except ValueError:
+        print(f"Error: Invalid data in file '{path}'. Check file format.")
+        return 0, 0  # Returning 0, 0 in case of data error
+
+# Example of using the function:
+total, average = total_salary("salary_file.txt")
+print(f"Total salary: {total}, Average salary: {average}")
