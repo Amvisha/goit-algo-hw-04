@@ -27,5 +27,5 @@ def get_cats_info(path: str) -> list:
     return cats_info
 
 # Example of using the function
-# cats_info: list = get_cats_info("cats_file.txt")
-# print(cats_info)
+cats_info: list = get_cats_info("cats_file.txt")
+print(cats_info)

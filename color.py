@@ -21,18 +21,18 @@ def visualize_directory_structure(directory_path: str):
         print(Fore.RED + f"Error: '{directory_path}' is not a directory.")
         return
 
-    def _visualize(path, prefix=''):
+    def visualize(path, prefix=''):
         #Recursive function for traversing a directory.
         items = list(path.iterdir())
         for index, item in enumerate(items):
             if item.is_dir():
                 print(prefix + Fore.BLUE + item.name + '/')
-                _visualize(item, prefix + '    ')
+                visualize(item, prefix + '    ')
             else:
                 print(prefix + Fore.GREEN + item.name)
 
     print(Fore.CYAN + directory.name + '/')
-    _visualize(directory, '    ')
+    visualize(directory, '    ')
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
