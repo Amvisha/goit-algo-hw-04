@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 from colorama import Fore, init
 
-def visualize_directory_structure(directory_path):
+def visualize_directory_structure(directory_path: str):
     """
     Visualizes the directory structure using colors to distinguish files and folders.
 
@@ -38,5 +38,5 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Using: python color.py <directory_path>")
     else:
-        directory_path = sys.argv[1]
+        directory_path: str = sys.argv[1]
         visualize_directory_structure(directory_path)
