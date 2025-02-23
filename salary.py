@@ -16,14 +16,14 @@ def total_salary(path):
         with open(path, 'r', encoding='utf-8') as file:
             for line in file:
                 developer, salary = line.strip().split(',')
-                total_salary += int(salary)
+                total_salary += float(salary)
                 developer_count += 1
 
         if developer_count == 0:
             print(f"The file '{path}' is empty.")
             return 0, 0  # Returning 0, 0, if file is empty
 
-        average_salary = int(total_salary / developer_count)
+        average_salary = total_salary / developer_count
         return total_salary, average_salary
 
     except FileNotFoundError:
